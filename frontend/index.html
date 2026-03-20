@@ -14,8 +14,6 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
-
-    /* ── Header ── */
     header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
     .logo{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem;color:var(--accent)}
     .logo-box{background:var(--accent);color:#fff;width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800}
@@ -27,22 +25,14 @@
     #connectBtn{padding:.42rem 1rem;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);font-weight:600;font-size:.83rem;cursor:pointer}
     #connectBtn:hover{background:var(--accent);color:#fff}
     #connectBtn.connected{border-color:var(--success);color:var(--success)}
-
-    /* ── Layout ── */
     main{max-width:1000px;margin:0 auto;padding:1.5rem 1.5rem 4rem}
-
-    /* ── Tabs ── */
     .tab-row{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.2rem;gap:.2rem}
     .tab{padding:.5rem 1rem;border:none;background:none;font-size:.85rem;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:inherit}
     .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
     .tab-panel{display:none}.tab-panel.active{display:block}
-
-    /* ── Cards ── */
     .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1.1rem}
     .card-title{font-weight:700;font-size:.93rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
     .cicon{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.82rem;flex-shrink:0}
-
-    /* ── Drop zone ── */
     .drop{border:2px dashed var(--border);border-radius:10px;padding:2rem;text-align:center;cursor:pointer;transition:all .2s;position:relative}
     .drop:hover,.drop.over{border-color:var(--accent);background:#eff6ff}
     .drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
@@ -50,38 +40,27 @@
     .file-name{font-weight:600;font-size:.87rem}
     .file-meta{font-size:.73rem;color:var(--muted)}
     .fremove{margin-left:auto;cursor:pointer;color:var(--muted);border:none;background:none;font-size:1.1rem}
-
-    /* ── Inputs ── */
     .field{margin-bottom:.8rem}
     .field label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.3rem;font-weight:500}
     .field input{width:100%;padding:.5rem .8rem;border:1px solid var(--border);border-radius:8px;font-size:.88rem;font-family:inherit;color:var(--text);background:var(--surface)}
     .field input:focus{outline:none;border-color:var(--accent)}
-
-    /* ── Buttons ── */
     .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.2rem;border-radius:8px;border:none;font-size:.86rem;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
     .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:#1d4ed8}
     .btn-green{background:var(--success);color:#fff}.btn-green:hover{background:#15803d}
     .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-    .btn-red{background:var(--error);color:#fff}.btn-red:hover{background:#b91c1c}
     .btn:disabled{opacity:.4;cursor:not-allowed}
     .btn-full{width:100%;justify-content:center}
     @keyframes spin{to{transform:rotate(360deg)}}
     .spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:inline-block}
-
-    /* ── Metrics ── */
     .mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-bottom:.9rem}
     .metric{background:var(--light);border-radius:9px;padding:.7rem .9rem}
     .mlbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.25rem}
     .mval{font-size:1.2rem;font-weight:700}
     .msub{font-size:.7rem;color:var(--muted);margin-top:.1rem}
-
-    /* ── Hash ── */
     .hash-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.2rem}
     .hash-box{background:#0f172a;border-radius:8px;padding:.6rem .9rem;font-family:monospace;font-size:.71rem;color:#22d3ee;word-break:break-all;position:relative;margin:.35rem 0}
     .copy-btn{position:absolute;top:.45rem;right:.45rem;background:rgba(255,255,255,.1);border:none;border-radius:4px;color:#94a3b8;padding:.18rem .45rem;font-size:.66rem;cursor:pointer}
     .copy-btn:hover{color:#fff}
-
-    /* ── Questions table ── */
     .qrow{display:grid;grid-template-columns:30px 1fr 90px 70px 70px;gap:.6rem;align-items:start;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.8rem}
     .qrow:last-child{border-bottom:none}
     .qnum{font-weight:700;color:var(--muted)}
@@ -94,59 +73,17 @@
     .bloom-create{background:#fff1f2;color:#be123c}
     .flag-w{color:var(--warn);font-size:.7rem}
     .flag-ok{color:var(--success);font-size:.7rem}
-
-    /* ══ TRANSACTION LOG ══ */
-    .tx-log{display:flex;flex-direction:column;gap:.6rem}
-    .tx-entry{border:1px solid var(--border);border-radius:10px;overflow:hidden}
-    .tx-header{display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem;cursor:pointer;user-select:none;background:var(--light)}
-    .tx-header:hover{background:#e8eef6}
-    .tx-status{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-    .tx-status.success{background:var(--success)}
-    .tx-status.failed{background:var(--error)}
-    .tx-status.pending{background:var(--warn);animation:blink 1s infinite}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-    .tx-type{font-weight:600;font-size:.83rem}
-    .tx-time{font-size:.72rem;color:var(--muted);margin-left:auto}
-    .tx-hash-short{font-family:monospace;font-size:.72rem;color:var(--muted)}
-    .tx-badge{padding:2px 8px;border-radius:20px;font-size:.68rem;font-weight:600;flex-shrink:0}
-    .badge-success{background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d}
-    .badge-failed{background:#fef2f2;border:1px solid #fecaca;color:#dc2626}
-    .badge-pending{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
-    .tx-body{padding:.8rem 1rem;font-size:.8rem;border-top:1px solid var(--border);display:none;background:var(--surface)}
-    .tx-body.open{display:block}
-    .tx-row{display:flex;justify-content:space-between;align-items:flex-start;padding:.3rem 0;border-bottom:1px solid var(--light)}
-    .tx-row:last-child{border-bottom:none}
-    .tx-key{color:var(--muted);flex-shrink:0;width:130px}
-    .tx-val{font-family:monospace;font-size:.75rem;word-break:break-all;text-align:right;color:var(--text)}
-    .tx-val.green{color:var(--success)}
-    .tx-val.red{color:var(--error)}
-    .tx-val.blue{color:var(--accent)}
-    .log-empty{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem}
-    .log-toolbar{display:flex;gap:.5rem;margin-bottom:.8rem;flex-wrap:wrap;align-items:center}
-    .filter-chip{padding:.25rem .7rem;border-radius:20px;border:1px solid var(--border);background:transparent;font-size:.75rem;cursor:pointer;font-family:inherit;color:var(--muted)}
-    .filter-chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .log-count{font-size:.78rem;color:var(--muted);margin-left:auto}
-
-    /* ── Chain panel ── */
     .chain-panel{background:#0f172a;border-radius:12px;padding:1.2rem;margin-top:1rem}
     .chain-row{display:flex;justify-content:space-between;align-items:center;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.8rem}
     .chain-row:last-child{border-bottom:none}
     .ckey{color:#94a3b8}.cval{color:#e2e8f0;font-family:monospace;font-size:.73rem;word-break:break-all}
-    .cgreen{color:#4ade80}.cred{color:#f87171}
-
-    /* ── Bloom bars ── */
+    .cgreen{color:#4ade80}
     .bbar-row{display:flex;align-items:center;gap:7px;margin-bottom:4px}
     .bbar-lbl{width:70px;font-size:.7rem;text-align:right;color:var(--muted)}
     .bbar-track{flex:1;height:12px;background:var(--light);border-radius:6px;overflow:hidden}
     .bbar-fill{height:100%;border-radius:6px;transition:width .5s}
     .bbar-n{width:18px;font-size:.7rem;color:var(--muted)}
     .bias-tag{display:inline-block;margin:.2rem;padding:2px 7px;border-radius:5px;font-size:.7rem;background:#fef3c7;color:#92400e;border:1px solid #fde68a}
-
-    /* ── Ganache tip box ── */
-    .tip-box{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1rem;font-size:.82rem;color:#78350f}
-    .tip-box strong{color:#92400e}
-
-    /* ── Toast ── */
     #toast{position:fixed;bottom:1.5rem;right:1.5rem;background:#1e293b;color:#f1f5f9;padding:.75rem 1.1rem;border-radius:10px;font-size:.82rem;transform:translateY(4rem);opacity:0;transition:all .3s;z-index:999;max-width:320px}
     #toast.show{transform:translateY(0);opacity:1}
   </style>
@@ -167,21 +104,14 @@
 
 <main>
 
-  <!-- Ganache tip -->
-  <div class="tip-box" id="ganacheTip">
-    <strong>Before you start:</strong> Open the <strong>Ganache desktop app</strong> → create a new workspace → link <code>truffle-config.js</code> → click Start. Then deploy: <code>npm run migrate</code>
-  </div>
-
   <div class="tab-row">
     <button class="tab active" onclick="sw('analyse',this)">Analyse & Notarize</button>
     <button class="tab" onclick="sw('verify',this)">Verify</button>
-    <button class="tab" onclick="sw('txlog',this)">Transaction Log <span id="txBadge" style="background:#2563eb;color:#fff;border-radius:20px;padding:1px 7px;font-size:.68rem;margin-left:4px">0</span></button>
     <button class="tab" onclick="sw('config',this)">Config</button>
   </div>
 
   <!-- ═══ ANALYSE ═══ -->
   <div id="tab-analyse" class="tab-panel active">
-
     <div class="card">
       <div class="card-title"><div class="cicon" style="background:#eff6ff">📄</div> Upload question paper</div>
       <div class="field"><label>Exam title</label><input id="examTitle" placeholder="e.g. Computer Science Final Exam 2025"/></div>
@@ -249,78 +179,18 @@
     <div id="verifyResult" style="display:none" class="card"></div>
   </div>
 
-  <!-- ═══ TRANSACTION LOG ═══ -->
-  <div id="tab-txlog" class="tab-panel">
-    <div class="card">
-      <div class="card-title"><div class="cicon" style="background:#fef3c7">📋</div> Transaction log</div>
-
-      <div class="log-toolbar">
-        <button class="filter-chip on" onclick="setFilter('all',this)">All</button>
-        <button class="filter-chip" onclick="setFilter('success',this)">Successful</button>
-        <button class="filter-chip" onclick="setFilter('failed',this)">Failed</button>
-        <button class="filter-chip" onclick="setFilter('notarize',this)">Notarize</button>
-        <button class="filter-chip" onclick="setFilter('verify',this)">Verify</button>
-        <span class="log-count" id="logCount">0 transactions</span>
-        <button class="btn btn-outline" style="padding:.25rem .7rem;font-size:.75rem;margin-left:auto" onclick="clearLog()">Clear</button>
-      </div>
-
-      <div class="tx-log" id="txLog">
-        <div class="log-empty" id="logEmpty">No transactions yet. Notarize a paper to see logs here.</div>
-      </div>
-    </div>
-
-    <!-- Ganache connection status -->
-    <div class="card">
-      <div class="card-title"><div class="cicon" style="background:#fef3c7">🔌</div> Ganache connection</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
-        <div class="metric"><div class="mlbl">RPC endpoint</div><div class="mval" style="font-size:.9rem;font-family:monospace" id="rpcDisplay">http://127.0.0.1:8545</div></div>
-        <div class="metric"><div class="mlbl">Chain ID</div><div class="mval" id="chainIdDisplay">—</div></div>
-        <div class="metric"><div class="mlbl">Block number</div><div class="mval" id="blockDisplay">—</div></div>
-        <div class="metric"><div class="mlbl">Wallet balance</div><div class="mval" id="balDisplay">—</div></div>
-      </div>
-      <button class="btn btn-outline" style="margin-top:.8rem" onclick="refreshChainInfo()">↻ Refresh</button>
-    </div>
-  </div>
-
   <!-- ═══ CONFIG ═══ -->
   <div id="tab-config" class="tab-panel">
     <div class="card">
       <div class="card-title"><div class="cicon" style="background:#f1f5f9">⚙️</div> Configuration</div>
-
-      <div class="tip-box">
-        <strong>Ganache setup:</strong><br/>
-        1. Open Ganache app → New Workspace → add <code>truffle-config.js</code><br/>
-        2. Set RPC Server to <code>HTTP://127.0.0.1:8545</code><br/>
-        3. Run <code>npm run migrate</code> in terminal<br/>
-        4. Paste the deployed contract address below
-      </div>
-
       <div class="field"><label>NLP API URL</label><input id="cfgApi" value="http://localhost:8000" oninput="CFG.api=this.value"/></div>
-      <div class="field"><label>Contract address (from truffle migrate output)</label><input id="cfgContract" placeholder="0x..." oninput="CFG.contract=this.value.trim()"/></div>
+      <div class="field"><label>Contract address</label><input id="cfgContract" placeholder="0x..." oninput="CFG.contract=this.value.trim()"/></div>
       <div class="field"><label>Ganache RPC URL</label><input id="cfgRpc" value="http://127.0.0.1:8545" oninput="CFG.rpc=this.value"/></div>
-
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem">
         <button class="btn btn-outline" onclick="testApi()">Test NLP API</button>
         <button class="btn btn-outline" onclick="testChain()">Test Ganache connection</button>
       </div>
       <div id="cfgStatus" style="margin-top:.6rem;font-size:.8rem"></div>
-    </div>
-
-    <!-- Truffle config preview -->
-    <div class="card">
-      <div class="card-title"><div class="cicon" style="background:#f0fdf4">📄</div> truffle-config.js — key settings</div>
-      <div class="hash-box" style="font-size:.78rem;line-height:1.7;color:#a5f3fc">
-        networks: {<br/>
-        &nbsp;&nbsp;development: {<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;host: "127.0.0.1",<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;port: 8545,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Ganache GUI port<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;network_id: "5777",&nbsp;&nbsp;← Ganache GUI network ID<br/>
-        &nbsp;&nbsp;}<br/>
-        }
-      </div>
-      <div style="font-size:.78rem;color:var(--muted);margin-top:.6rem">
-        In Ganache app → Settings → Server — make sure port matches 8545 and network ID matches 5777.
-      </div>
     </div>
   </div>
 
@@ -328,10 +198,7 @@
 <div id="toast"></div>
 
 <script>
-// ── Config ───────────────────────────────────────────────────
 const CFG = { api:"http://localhost:8000", contract:"", rpc:"http://127.0.0.1:8545" };
-
-// Auto-load contract address if deploy script wrote it
 try { if(typeof CONTRACT_ADDRESS!=="undefined") CFG.contract=CONTRACT_ADDRESS; } catch(e){}
 
 const ABI = [
@@ -339,12 +206,9 @@ const ABI = [
   "function verify(bytes32 paperHash) external view returns (bool valid, address setter, bytes32 reportHash, uint256 timestamp, string memory title)"
 ];
 
-// ── State ─────────────────────────────────────────────────────
 let provider, signer, walletAddr;
 let currentFile=null, analysisData=null, vFile=null;
-let txLogs=[], txFilter="all";
 
-// ── Wallet ────────────────────────────────────────────────────
 async function connectWallet() {
   if (!window.ethereum) return toast("MetaMask not found","error");
   try {
@@ -352,17 +216,12 @@ async function connectWallet() {
     await provider.send("eth_requestAccounts",[]);
     signer = provider.getSigner();
     walletAddr = await signer.getAddress();
-
     const network = await provider.getNetwork();
     updateNetworkPill(network.chainId);
-
     document.getElementById("connectBtn").textContent = "✅ "+short(walletAddr);
     document.getElementById("connectBtn").classList.add("connected");
     document.getElementById("walletPill").textContent = short(walletAddr);
     document.getElementById("walletPill").style.display = "inline";
-    document.getElementById("ganacheTip").style.display = "none";
-
-    await refreshChainInfo();
     toast("Wallet connected — "+short(walletAddr),"success");
   } catch(e){ toast("Connection failed: "+e.message,"error"); }
 }
@@ -379,21 +238,6 @@ function updateNetworkPill(chainId) {
   }
 }
 
-async function refreshChainInfo() {
-  if (!provider) return;
-  try {
-    const net = await provider.getNetwork();
-    const block = await provider.getBlockNumber();
-    const bal = walletAddr ? await provider.getBalance(walletAddr) : null;
-    document.getElementById("chainIdDisplay").textContent = net.chainId;
-    document.getElementById("blockDisplay").textContent = "#"+block;
-    document.getElementById("balDisplay").textContent = bal ? parseFloat(ethers.utils.formatEther(bal)).toFixed(4)+" ETH" : "—";
-    document.getElementById("rpcDisplay").textContent = CFG.rpc;
-    updateNetworkPill(net.chainId);
-  } catch(e) {}
-}
-
-// ── File drag/drop ────────────────────────────────────────────
 function dz(e,t)  { e.preventDefault(); document.getElementById("dropzone").classList.toggle("over",t==="over"); if(t==="drop") loadFile(e.dataTransfer.files[0],false); }
 function dz2(e,t) { e.preventDefault(); document.getElementById("vDropzone").classList.toggle("over",t==="over"); if(t==="drop") loadFile(e.dataTransfer.files[0],true); }
 function onFile(e)  { loadFile(e.target.files[0],false); }
@@ -435,41 +279,26 @@ function clearVFile() {
   document.getElementById("vFileIn").value="";
 }
 
-// ── NLP Analysis ──────────────────────────────────────────────
 async function runAnalysis() {
   if (!currentFile) return;
   const btn=document.getElementById("analyseBtn");
   const st=document.getElementById("nlpStatus");
   btn.innerHTML='<span class="spinner"></span> Analysing…'; btn.disabled=true;
   st.textContent="Sending to NLP API…";
-
   const started=Date.now();
   try {
     const title=document.getElementById("examTitle").value||currentFile.name;
     const form=new FormData();
     form.append("file",currentFile);
     form.append("title",title);
-
     const resp=await fetch(CFG.api+"/analyze",{method:"POST",body:form});
     if(!resp.ok){const e=await resp.json().catch(()=>({detail:"Error"})); throw new Error(e.detail);}
     analysisData=await resp.json();
-
-    addTxLog({
-      type:"nlp-analysis", status:"success",
-      title:"NLP analysis — "+title,
-      file:currentFile.name,
-      duration:((Date.now()-started)/1000).toFixed(1)+"s",
-      questions:analysisData.question_count,
-      paperHash:analysisData.paper_hash,
-      reportHash:analysisData.report_hash,
-    });
-
     renderResults(analysisData);
     document.getElementById("resultsCard").style.display="block";
     st.textContent="✅ Analysis complete";
     toast("NLP analysis done!","success");
   } catch(e) {
-    addTxLog({type:"nlp-analysis",status:"failed",title:"NLP analysis failed",error:e.message,duration:((Date.now()-started)/1000).toFixed(1)+"s"});
     st.textContent="❌ "+e.message;
     toast("API error: "+e.message,"error");
     demoResults();
@@ -494,7 +323,6 @@ function renderResults(d) {
     metric("Bias flags",d.bias_summary.length,d.bias_summary.length?"⚠ review":"✓ none");
   document.getElementById("paperHash").textContent=d.paper_hash;
   document.getElementById("reportHash").textContent=d.report_hash;
-
   const levels=["remember","understand","apply","analyse","evaluate","create"];
   const cnts={}; levels.forEach(l=>cnts[l]=0);
   d.questions.forEach(q=>{if(cnts[q.bloom_level]!==undefined)cnts[q.bloom_level]++;});
@@ -503,11 +331,9 @@ function renderResults(d) {
   document.getElementById("bloomBars").innerHTML=levels.map(l=>
     `<div class="bbar-row"><div class="bbar-lbl">${l}</div><div class="bbar-track"><div class="bbar-fill" style="width:${Math.round(cnts[l]/mx*100)}%;background:${cols[l]}"></div></div><div class="bbar-n">${cnts[l]}</div></div>`
   ).join("");
-
   document.getElementById("biasSummary").innerHTML=d.bias_summary.length
     ?`<div>${d.bias_summary.map(b=>`<span class="bias-tag">${b}</span>`).join("")}</div>`
     :`<span style="font-size:.78rem;color:var(--success)">✓ No bias flags</span>`;
-
   document.getElementById("qTable").innerHTML=d.questions.map(q=>`
     <div class="qrow">
       <div class="qnum">Q${q.index}</div>
@@ -520,49 +346,29 @@ function renderResults(d) {
 
 function metric(l,v,s){return `<div class="metric"><div class="mlbl">${l}</div><div class="mval">${v}</div>${s?`<div class="msub">${s}</div>`:""}</div>`;}
 
-// ── Notarize ──────────────────────────────────────────────────
 async function notarize() {
   if (!analysisData) return;
   if (!CFG.contract) return toast("Paste contract address in Config tab first","warn");
-
   const btn=document.getElementById("notarizeBtn");
   btn.innerHTML='<span class="spinner"></span> Waiting for MetaMask…'; btn.disabled=true;
-
-  const logEntry={
-    type:"notarize", status:"pending",
-    title:"Notarize — "+analysisData.title,
-    from: walletAddr||"demo",
-    to:   CFG.contract,
-    paperHash: analysisData.paper_hash,
-    reportHash: analysisData.report_hash,
-    network:"Ganache",
-    ts:Date.now(),
-  };
-  const logId=addTxLog(logEntry);
-
   try {
     let txHash, blockNum, gasUsed;
-
     if (signer) {
       const contract=new ethers.Contract(CFG.contract, ABI, signer);
       const ph=analysisData.paper_hash.padEnd(66,"0").slice(0,66);
       const rh=analysisData.report_hash.padEnd(66,"0").slice(0,66);
       const tx=await contract.notarize(ph, rh, analysisData.title);
       toast("TX sent: "+tx.hash.slice(0,18)+"…","info");
-      updateTxLog(logId,{txHash:tx.hash,status:"pending"});
       const receipt=await tx.wait();
       txHash=receipt.transactionHash;
       blockNum=receipt.blockNumber;
       gasUsed=receipt.gasUsed?.toString();
-      toast("✅ Confirmed in Ganache block #"+blockNum,"success");
+      toast("✅ Confirmed in block #"+blockNum,"success");
     } else {
       await sleep(1200);
       txHash="0x"+rndHex(64)+" (demo)"; blockNum="demo"; gasUsed="21000";
-      toast("Demo mode — connect MetaMask for real Ganache TX","warn");
+      toast("Demo mode — connect MetaMask for real TX","warn");
     }
-
-    updateTxLog(logId,{status:"success",txHash,blockNum,gasUsed});
-
     document.getElementById("chainRecord").innerHTML=`
       <div class="chain-row"><span class="ckey">Status</span><span class="cgreen">✓ Confirmed on Ganache</span></div>
       <div class="chain-row"><span class="ckey">Exam title</span><span class="cval">${analysisData.title}</span></div>
@@ -576,10 +382,7 @@ async function notarize() {
       <div class="chain-row"><span class="ckey">Timestamp</span><span class="cval">${new Date().toLocaleString()}</span></div>
     `;
     document.getElementById("chainCard").style.display="block";
-    await refreshChainInfo();
-
   } catch(e) {
-    updateTxLog(logId,{status:"failed",error:e.message});
     toast("TX failed: "+e.message,"error");
     document.getElementById("notarizeStatus").innerHTML=`<span style="color:var(--error);font-size:.8rem">❌ ${e.message}</span>`;
   } finally {
@@ -587,12 +390,9 @@ async function notarize() {
   }
 }
 
-// ── Verify ────────────────────────────────────────────────────
 async function verifyChain() {
   if (!vFile||!CFG.contract) return toast("Set contract address in Config","warn");
   const hash=document.getElementById("vHash").textContent;
-
-  const logId=addTxLog({type:"verify",status:"pending",title:"Verify — "+vFile.name,paperHash:hash,ts:Date.now()});
   try {
     let result=null;
     if (provider) {
@@ -600,10 +400,7 @@ async function verifyChain() {
       const ph=hash.padEnd(66,"0").slice(0,66);
       result=await contract.verify(ph);
     } else { await sleep(500); }
-
     const valid=result&&result[0];
-    updateTxLog(logId,{status:"success",result:valid?"found":"not found"});
-
     const el=document.getElementById("verifyResult");
     el.style.display="block";
     if (valid) {
@@ -620,97 +417,10 @@ async function verifyChain() {
       toast("Paper not found on chain","error");
     }
   } catch(e) {
-    updateTxLog(logId,{status:"failed",error:e.message});
     toast("Verify error: "+e.message,"error");
   }
 }
 
-// ── Transaction log ───────────────────────────────────────────
-let logIdCounter=0;
-
-function addTxLog(entry) {
-  const id=logIdCounter++;
-  txLogs.unshift({...entry, id, ts:entry.ts||Date.now(), open:false});
-  renderLog();
-  return id;
-}
-
-function updateTxLog(id, patch) {
-  const idx=txLogs.findIndex(t=>t.id===id);
-  if (idx===-1) return;
-  txLogs[idx]={...txLogs[idx],...patch};
-  renderLog();
-}
-
-function clearLog() { txLogs=[]; renderLog(); }
-
-function setFilter(f, btn) {
-  txFilter=f;
-  document.querySelectorAll(".filter-chip").forEach(b=>b.classList.remove("on"));
-  btn.classList.add("on");
-  renderLog();
-}
-
-function toggleEntry(id) {
-  const idx=txLogs.findIndex(t=>t.id===id);
-  if (idx!==-1) txLogs[idx].open=!txLogs[idx].open;
-  renderLog();
-}
-
-function renderLog() {
-  const filtered=txFilter==="all"?txLogs:txLogs.filter(t=>{
-    if(txFilter==="success") return t.status==="success";
-    if(txFilter==="failed")  return t.status==="failed";
-    if(txFilter==="notarize") return t.type==="notarize";
-    if(txFilter==="verify")   return t.type==="verify";
-    return true;
-  });
-
-  document.getElementById("logCount").textContent=txLogs.length+" transaction"+(txLogs.length!==1?"s":"");
-  document.getElementById("txBadge").textContent=txLogs.length;
-
-  const el=document.getElementById("txLog");
-  if (!filtered.length) {
-    el.innerHTML=`<div class="log-empty">${txLogs.length?"No transactions match this filter.":"No transactions yet."}</div>`;
-    return;
-  }
-
-  el.innerHTML=filtered.map(t=>{
-    const statusClass=t.status==="success"?"success":t.status==="failed"?"failed":"pending";
-    const badgeClass=t.status==="success"?"badge-success":t.status==="failed"?"badge-failed":"badge-pending";
-    const statusText=t.status==="success"?"✓ Success":t.status==="failed"?"✗ Failed":"◎ Pending";
-    const typeLabel=t.type==="notarize"?"⛓ Notarize":t.type==="verify"?"🔍 Verify":"🧠 NLP";
-    const timeStr=new Date(t.ts).toLocaleTimeString();
-
-    let bodyRows="";
-    if(t.txHash) bodyRows+=`<div class="tx-row"><span class="tx-key">TX hash</span><span class="tx-val blue">${t.txHash.length>30?t.txHash.slice(0,24)+"…":t.txHash}</span></div>`;
-    if(t.from)   bodyRows+=`<div class="tx-row"><span class="tx-key">From</span><span class="tx-val">${short(t.from)}</span></div>`;
-    if(t.to)     bodyRows+=`<div class="tx-row"><span class="tx-key">To (contract)</span><span class="tx-val">${short(t.to)}</span></div>`;
-    if(t.paperHash) bodyRows+=`<div class="tx-row"><span class="tx-key">Paper hash</span><span class="tx-val">${t.paperHash.slice(0,20)}…</span></div>`;
-    if(t.reportHash) bodyRows+=`<div class="tx-row"><span class="tx-key">Report hash</span><span class="tx-val">${t.reportHash.slice(0,20)}…</span></div>`;
-    if(t.blockNum) bodyRows+=`<div class="tx-row"><span class="tx-key">Block</span><span class="tx-val green">#${t.blockNum}</span></div>`;
-    if(t.gasUsed) bodyRows+=`<div class="tx-row"><span class="tx-key">Gas used</span><span class="tx-val">${parseInt(t.gasUsed).toLocaleString()}</span></div>`;
-    if(t.duration) bodyRows+=`<div class="tx-row"><span class="tx-key">Duration</span><span class="tx-val">${t.duration}</span></div>`;
-    if(t.questions) bodyRows+=`<div class="tx-row"><span class="tx-key">Questions</span><span class="tx-val">${t.questions}</span></div>`;
-    if(t.result) bodyRows+=`<div class="tx-row"><span class="tx-key">Verify result</span><span class="tx-val ${t.result==="found"?"green":"red"}">${t.result}</span></div>`;
-    if(t.error)  bodyRows+=`<div class="tx-row"><span class="tx-key">Error</span><span class="tx-val red">${t.error}</span></div>`;
-    bodyRows+=`<div class="tx-row"><span class="tx-key">Timestamp</span><span class="tx-val">${new Date(t.ts).toLocaleString()}</span></div>`;
-
-    return `
-      <div class="tx-entry">
-        <div class="tx-header" onclick="toggleEntry(${t.id})">
-          <div class="tx-status ${statusClass}"></div>
-          <div class="tx-type">${typeLabel}</div>
-          <div style="font-size:.78rem;color:var(--muted);flex:1;margin-left:.5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.title||""}</div>
-          <span class="tx-badge ${badgeClass}">${statusText}</span>
-          <div class="tx-time">${timeStr}</div>
-        </div>
-        <div class="tx-body ${t.open?"open":""}">${bodyRows}</div>
-      </div>`;
-  }).join("");
-}
-
-// ── Helpers ───────────────────────────────────────────────────
 async function sha256File(file) {
   const buf=await file.arrayBuffer();
   const digest=await crypto.subtle.digest("SHA-256",buf);
@@ -732,8 +442,7 @@ function toast(msg,type="info"){const t=document.getElementById("toast");t.textC
 
 if(window.ethereum){window.ethereum.on("accountsChanged",()=>location.reload());window.ethereum.on("chainChanged",()=>location.reload());}
 
-// Auto-fill contract address if written by deploy script
-window.addEventListener("load",()=>{if(CFG.contract){document.getElementById("cfgContract").value=CFG.contract;toast("Contract address auto-loaded from deploy script","success");}});
+window.addEventListener("load",()=>{if(CFG.contract){document.getElementById("cfgContract").value=CFG.contract;toast("Contract address auto-loaded","success");}});
 </script>
 </body>
 </html>
