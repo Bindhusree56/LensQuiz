@@ -36,13 +36,11 @@
       min-height: 100vh;
     }
 
-    /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--surface); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-    /* ── Header ── */
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -161,14 +159,12 @@
       color: white;
     }
 
-    /* ── Main ── */
     main {
       max-width: 1100px;
       margin: 0 auto;
       padding: 2rem;
     }
 
-    /* ── Tabs ── */
     .tab-row {
       display: flex;
       border-bottom: 1px solid var(--border);
@@ -209,7 +205,6 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ── Cards ── */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -246,7 +241,6 @@
       font-size: 1rem;
     }
 
-    /* ── Form Elements ── */
     .field {
       margin-bottom: 1rem;
     }
@@ -295,7 +289,6 @@
     .field-hint.success { color: var(--success); }
     .field-hint.error { color: var(--error); }
 
-    /* ── Dropzone ── */
     .dropzone {
       border: 2px dashed var(--border);
       border-radius: 12px;
@@ -338,7 +331,6 @@
       color: var(--muted);
     }
 
-    /* ── File Chip ── */
     .file-chip {
       display: flex;
       align-items: center;
@@ -377,7 +369,6 @@
 
     .file-remove:hover { color: var(--error); }
 
-    /* ── Buttons ── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -453,7 +444,6 @@
       animation: spin 0.6s linear infinite;
     }
 
-    /* ── Status ── */
     .status {
       font-size: 0.75rem;
       color: var(--muted);
@@ -464,7 +454,6 @@
     .status.error { color: var(--error); }
     .status.success { color: var(--success); }
 
-    /* ── Metrics Grid ── */
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -507,7 +496,6 @@
       margin-top: 0.25rem;
     }
 
-    /* ── Hash Boxes ── */
     .hash-section { margin-top: 1.25rem; }
 
     .hash-label {
@@ -546,7 +534,6 @@
 
     .hash-copy:hover { color: white; background: rgba(255,255,255,0.2); }
 
-    /* ── Bloom Bars ── */
     .bloom-section { margin: 1.25rem 0; }
 
     .bloom-row {
@@ -584,7 +571,6 @@
       text-align: left;
     }
 
-    /* ── Bloom Pills ── */
     .bloom-pill {
       padding: 0.2rem 0.6rem;
       border-radius: 20px;
@@ -600,7 +586,6 @@
     .bloom-evaluate { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
     .bloom-create { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
 
-    /* ── Bias Tags ── */
     .bias-tags { margin: 1rem 0; }
 
     .bias-tag {
@@ -619,7 +604,6 @@
       color: var(--success);
     }
 
-    /* ── Question Table ── */
     .q-table {
       margin-top: 1rem;
     }
@@ -668,7 +652,6 @@
     .q-status.ok { color: var(--success); }
     .q-status.warn { color: var(--warn); }
 
-    /* ── Chain Panel ── */
     .chain-panel {
       background: var(--bg);
       border-radius: 12px;
@@ -701,7 +684,6 @@
       word-break: break-all;
     }
 
-    /* ── Config ── */
     .config-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -720,7 +702,6 @@
       font-size: 0.8rem;
     }
 
-    /* ── Merkle Tree ── */
     .merkle-container {
       overflow-x: auto;
       padding: 1rem 0;
@@ -834,7 +815,6 @@
       word-break: break-all;
     }
 
-    /* ── Toast ── */
     #toast {
       position: fixed;
       bottom: 2rem;
@@ -861,7 +841,6 @@
     #toast.success { border-color: var(--success); }
     #toast.info { border-color: var(--accent); }
 
-    /* ── Empty State ── */
     .empty-state {
       text-align: center;
       padding: 3rem;
@@ -874,7 +853,6 @@
       opacity: 0.5;
     }
 
-    /* ── Action Bar ── */
     .action-bar {
       display: flex;
       gap: 0.75rem;
@@ -888,7 +866,6 @@
       margin-top: 0.5rem;
     }
 
-    /* ── Connection Status ── */
     .connection-status {
       display: flex;
       gap: 1rem;
@@ -921,7 +898,6 @@
       50% { opacity: 0.5; }
     }
 
-    /* ── Responsive ── */
     @media (max-width: 768px) {
       main { padding: 1rem; }
       .tab { padding: 0.5rem 1rem; font-size: 0.8rem; }
@@ -945,7 +921,7 @@
   <div class="header-right">
     <span id="netBadge" class="net-badge"></span>
     <span id="walletBadge" class="wallet-badge"></span>
-    <button id="connectBtn" onclick="connectWallet()">🦊 Connect MetaMask</button>
+    <button id="connectBtn" data-action="connect">🦊 Connect MetaMask</button>
   </div>
 </header>
 
@@ -963,16 +939,14 @@
     </div>
   </div>
 
-  <!-- Tabs -->
   <div class="tab-row">
-    <button class="tab active" onclick="switchTab('analyse', this)">Analyse</button>
-    <button class="tab" onclick="switchTab('verify', this)">Verify</button>
-    <button class="tab" onclick="switchTab('merkle', this)">Merkle Tree</button>
-    <button class="tab" onclick="switchTab('config', this)">Config</button>
+    <button class="tab active" data-tab="analyse">Analyse</button>
+    <button class="tab" data-tab="verify">Verify</button>
+    <button class="tab" data-tab="merkle">Merkle Tree</button>
+    <button class="tab" data-tab="config">Config</button>
     <span class="tab-badge" id="configBadge" style="display: none;">!</span>
   </div>
 
-  <!-- ── ANALYSE TAB ── -->
   <div id="tab-analyse" class="tab-panel active">
     <div class="card">
       <div class="card-header">
@@ -985,11 +959,8 @@
         <input id="examTitle" type="text" placeholder="e.g., Computer Science Midterm 2025"/>
       </div>
 
-      <div class="dropzone" id="dropzone" 
-           ondragover="handleDrag(event, 'over')" 
-           ondragleave="handleDrag(event, 'leave')" 
-           ondrop="handleDrag(event, 'drop')">
-        <input type="file" id="fileInput" accept=".pdf,.docx,.txt" onchange="handleFileSelect(event)"/>
+      <div class="dropzone" id="dropzone" data-drag="analyse">
+        <input type="file" id="fileInput" accept=".pdf,.docx,.txt" data-file-select="analyse"/>
         <div class="dropzone-icon">📂</div>
         <div class="dropzone-text">Drag & drop your question paper</div>
         <div class="dropzone-hint">PDF, DOCX, or TXT</div>
@@ -1001,11 +972,11 @@
           <div id="fileName" class="file-name"></div>
           <div id="fileMeta" class="file-meta"></div>
         </div>
-        <button class="file-remove" onclick="clearFile()">✕</button>
+        <button class="file-remove" data-action="clearFile">✕</button>
       </div>
 
       <div style="margin-top: 1.25rem;">
-        <button class="btn btn-primary" id="analyzeBtn" onclick="runAnalysis()" disabled>
+        <button class="btn btn-primary" id="analyzeBtn" data-action="runAnalysis" disabled>
           <span id="analyzeBtnText">🔬 Run NLP Analysis</span>
         </button>
         <div id="nlpStatus" class="status"></div>
@@ -1024,7 +995,7 @@
         <div class="hash-label">Paper SHA-256</div>
         <div class="hash-box">
           <span id="paperHash"></span>
-          <button class="hash-copy" onclick="copyHash('paperHash')">Copy</button>
+          <button class="hash-copy" data-action="copyHash" data-target="paperHash">Copy</button>
         </div>
       </div>
 
@@ -1032,7 +1003,7 @@
         <div class="hash-label">Report SHA-256</div>
         <div class="hash-box">
           <span id="reportHash"></span>
-          <button class="hash-copy" onclick="copyHash('reportHash')">Copy</button>
+          <button class="hash-copy" data-action="copyHash" data-target="reportHash">Copy</button>
         </div>
       </div>
 
@@ -1055,8 +1026,8 @@
       </div>
 
       <div class="action-bar">
-        <button class="btn btn-outline" onclick="downloadReport()">⬇ Download PDF</button>
-        <button class="btn btn-green" id="notarizeBtn" onclick="notarize()">⛓ Notarize on Blockchain</button>
+        <button class="btn btn-outline" data-action="downloadReport">⬇ Download PDF</button>
+        <button class="btn btn-green" id="notarizeBtn" data-action="notarize">⛓ Notarize on Blockchain</button>
       </div>
       <div id="notarizeStatus" class="action-status"></div>
     </div>
@@ -1065,9 +1036,16 @@
       <div class="chain-title">⛓ On-chain Record — Ganache</div>
       <div id="chainRecord"></div>
     </div>
+
+    <div class="card" id="txHistoryCard" style="display: none;">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(99, 102, 241, 0.15)">📜</div>
+        <div class="card-title">Transaction History (This Session)</div>
+      </div>
+      <div id="txHistoryList"></div>
+    </div>
   </div>
 
-  <!-- ── VERIFY TAB ── -->
   <div id="tab-verify" class="tab-panel">
     <div class="card">
       <div class="card-header">
@@ -1075,11 +1053,8 @@
         <div class="card-title">Verify a Paper</div>
       </div>
 
-      <div class="dropzone" id="verifyDropzone"
-           ondragover="handleVerifyDrag(event, 'over')"
-           ondragleave="handleVerifyDrag(event, 'leave')"
-           ondrop="handleVerifyDrag(event, 'drop')">
-        <input type="file" id="verifyFileInput" accept=".pdf,.docx,.txt" onchange="handleVerifyFile(event)"/>
+      <div class="dropzone" id="verifyDropzone" data-drag="verify">
+        <input type="file" id="verifyFileInput" accept=".pdf,.docx,.txt" data-file-select="verify"/>
         <div class="dropzone-icon">🔎</div>
         <div class="dropzone-text">Drop paper to verify</div>
         <div class="dropzone-hint">PDF, DOCX, or TXT</div>
@@ -1091,20 +1066,19 @@
           <div id="verifyFileName" class="file-name"></div>
           <div id="verifyFileMeta" class="file-meta"></div>
         </div>
-        <button class="file-remove" onclick="clearVerifyFile()">✕</button>
+        <button class="file-remove" data-action="clearVerifyFile">✕</button>
       </div>
 
       <div id="verifyHashBox" style="display: none; margin-top: 1rem;">
         <div class="hash-label">File SHA-256</div>
         <div class="hash-box"><span id="verifyHash"></span></div>
-        <button class="btn btn-primary" style="margin-top: 1rem;" onclick="verifyChain()">🔍 Verify on Blockchain</button>
+        <button class="btn btn-primary" style="margin-top: 1rem;" data-action="verifyChain">🔍 Verify on Blockchain</button>
       </div>
     </div>
 
     <div id="verifyResult" class="card" style="display: none;"></div>
   </div>
 
-  <!-- ── MERKLE TREE TAB ── -->
   <div id="tab-merkle" class="tab-panel">
     <div class="card">
       <div class="card-header">
@@ -1151,7 +1125,7 @@
             <div class="merkle-info-value" id="merkleRootDisplay" style="color: var(--accent);">
               Loading...
             </div>
-            <button class="hash-copy" onclick="copyMerkleRoot()" style="margin-top: 0.5rem;">Copy</button>
+            <button class="hash-copy" data-action="copyMerkleRoot" style="margin-top: 0.5rem;">Copy</button>
           </div>
           <div class="merkle-info-item">
             <div class="merkle-info-label">Contract Address</div>
@@ -1166,10 +1140,10 @@
         </div>
 
         <div class="btn-group" style="margin-top: 1.5rem;">
-          <button class="btn btn-outline" id="refreshMerkleBtn" onclick="refreshMerkleTree()">
+          <button class="btn btn-outline" id="refreshMerkleBtn" data-action="refreshMerkle">
             🔄 Refresh Tree
           </button>
-          <button class="btn btn-outline" onclick="expandAllNodes()">
+          <button class="btn btn-outline" data-action="expandAllNodes">
             ↕ Expand All
           </button>
         </div>
@@ -1187,7 +1161,7 @@
         <input id="proofLeafHash" type="text" placeholder="0x..."/>
       </div>
 
-      <button class="btn btn-primary" style="width: auto;" onclick="verifyMerkleProof()">
+      <button class="btn btn-primary" style="width: auto;" data-action="verifyMerkleProof">
         🔍 Verify Proof
       </button>
 
@@ -1195,7 +1169,6 @@
     </div>
   </div>
 
-  <!-- ── CONFIG TAB ── -->
   <div id="tab-config" class="tab-panel">
     <div class="card">
       <div class="card-header">
@@ -1206,25 +1179,25 @@
       <div class="config-grid">
         <div class="field">
           <label>NLP API URL</label>
-          <input id="cfgApi" type="text" value="http://localhost:8000" oninput="validateApiUrl(this)"/>
+          <input id="cfgApi" type="text" value="http://localhost:8000" data-validate="api"/>
           <div class="field-hint" id="cfgApiHint">URL for NLP analysis service</div>
         </div>
         <div class="field">
           <label>Contract Address</label>
-          <input id="cfgContract" type="text" placeholder="0x..." oninput="validateContractAddress(this)"/>
+          <input id="cfgContract" type="text" placeholder="0x..." data-validate="contract"/>
           <div class="field-hint" id="cfgContractHint">QuizLens smart contract on blockchain</div>
         </div>
         <div class="field">
           <label>Ganache RPC URL</label>
-          <input id="cfgRpc" type="text" value="http://127.0.0.1:7777" oninput="validateRpcUrl(this)"/>
+          <input id="cfgRpc" type="text" value="http://127.0.0.1:8545" data-validate="rpc"/>
           <div class="field-hint" id="cfgRpcHint">Local blockchain node endpoint</div>
         </div>
       </div>
 
       <div class="btn-group">
-        <button class="btn btn-outline" onclick="testApi()">🧪 Test API</button>
-        <button class="btn btn-outline" onclick="testChain()">🔗 Test Connection</button>
-        <button class="btn btn-green" onclick="saveConfig()">💾 Save Config</button>
+        <button class="btn btn-outline" data-action="testApi">🧪 Test API</button>
+        <button class="btn btn-outline" data-action="testChain">🔗 Test Connection</button>
+        <button class="btn btn-green" data-action="saveConfig">💾 Save Config</button>
       </div>
 
       <div id="configStatus" class="config-status"></div>
@@ -1256,8 +1229,8 @@
       </div>
 
       <div class="btn-group" style="margin-top: 1rem;">
-        <button class="btn btn-outline btn-sm" onclick="loadConfig()">📥 Load Saved</button>
-        <button class="btn btn-outline btn-sm" onclick="clearSavedConfig()">🗑️ Clear Saved</button>
+        <button class="btn btn-outline btn-sm" data-action="loadConfig">📥 Load Saved</button>
+        <button class="btn btn-outline btn-sm" data-action="clearSavedConfig">🗑️ Clear Saved</button>
       </div>
     </div>
 
@@ -1267,8 +1240,8 @@
         <div class="card-title">Quick Setup Guide</div>
       </div>
       <div style="font-size: 0.8rem; color: var(--muted); line-height: 1.8;">
-        <p style="margin-bottom: 0.75rem;"><strong style="color: var(--text);">1. Start Ganache:</strong> Open Ganache GUI (ensure it's running on port 7777)</p>
-        <p style="margin-bottom: 0.75rem;"><strong style="color: var(--text);">2. Deploy Contract:</strong> Run <code style="background: var(--surface-2); padding: 0.2rem 0.4rem; border-radius: 4px;">npx hardhat run scripts/deploy.js --network ganache</code></p>
+        <p style="margin-bottom: 0.75rem;"><strong style="color: var(--text);">1. Start Ganache:</strong> Open Ganache GUI (ensure it's running on port 8545)</p>
+        <p style="margin-bottom: 0.75rem;"><strong style="color: var(--text);">2. Deploy Contract:</strong> Run <code style="background: var(--surface-2); padding: 0.2rem 0.4rem; border-radius: 4px;">npx truffle migrate --reset</code></p>
         <p style="margin-bottom: 0.75rem;"><strong style="color: var(--text);">3. Copy Address:</strong> The deployment script outputs the contract address</p>
         <p style="margin-bottom: 0.75rem;"><strong style="color: var(--text);">4. Paste Here:</strong> Enter the contract address above and click "Save Config"</p>
         <p><strong style="color: var(--text);">5. Start NLP:</strong> Run <code style="background: var(--surface-2); padding: 0.2rem 0.4rem; border-radius: 4px;">cd nlp && source venv/bin/activate && uvicorn app:app --reload</code></p>
@@ -1279,1085 +1252,6 @@
 
 <div id="toast"></div>
 
-<script>
-  // ── Config ──
-  const CFG = {
-    api: "http://localhost:8000",
-    contract: "",
-    rpc: "http://127.0.0.1:7777"
-  };
-
-  // Load contract address if available
-  try {
-    if (typeof CONTRACT_ADDRESS !== "undefined") {
-      CFG.contract = CONTRACT_ADDRESS;
-    }
-  } catch (e) {}
-
-  // Load saved config
-  loadSavedConfig();
-
-  // ── ABI ──
-  const ABI = [
-    "function notarize(bytes32 paperHash, bytes32 reportHash, string calldata title) external",
-    "function verify(bytes32 paperHash) external view returns (bool valid, address setter, bytes32 reportHash, uint256 timestamp, string memory title)",
-    "function merkleRoot() external view returns (bytes32)",
-    "function getLeafCount() external view returns (uint256)",
-    "function notarizedHashes(uint256) external view returns (bytes32)"
-  ];
-
-  // ── State ──
-  let provider = null;
-  let signer = null;
-  let walletAddr = null;
-  let currentFile = null;
-  let analysisData = null;
-  let verifyFile = null;
-
-  // ── MetaMask Connection ──
-  async function connectWallet() {
-    const btn = document.getElementById("connectBtn");
-    
-    if (typeof window.ethereum === "undefined") {
-      showToast("MetaMask not found. Please install MetaMask extension.", "error");
-      return;
-    }
-
-    try {
-      btn.innerHTML = '<span class="spinner"></span> Connecting...';
-      btn.disabled = true;
-
-      // Request account access
-      const accounts = await window.ethereum.request({ 
-        method: "eth_requestAccounts" 
-      });
-
-      if (accounts.length === 0) {
-        throw new Error("No accounts found");
-      }
-
-      // Create provider and signer
-      provider = new ethers.providers.Web3Provider(window.ethereum);
-      signer = provider.getSigner();
-      walletAddr = await signer.getAddress();
-
-      // Check network
-      const network = await provider.getNetwork();
-      updateNetworkBadge(network.chainId);
-
-      // Update UI
-      btn.textContent = "✅ " + shortAddr(walletAddr);
-      btn.classList.add("connected");
-      
-      const walletBadge = document.getElementById("walletBadge");
-      walletBadge.textContent = shortAddr(walletAddr);
-      walletBadge.style.display = "inline";
-
-      showToast("Wallet connected: " + shortAddr(walletAddr), "success");
-
-    } catch (error) {
-      console.error("Wallet connection error:", error);
-      let msg = "Connection failed";
-      if (error.code === 4001) {
-        msg = "User rejected the connection request";
-      } else if (error.message) {
-        msg = error.message;
-      }
-      showToast(msg, "error");
-      btn.textContent = "🦊 Connect MetaMask";
-    } finally {
-      btn.disabled = false;
-    }
-  }
-
-  function updateNetworkBadge(chainId) {
-    const badge = document.getElementById("netBadge");
-    badge.style.display = "inline";
-    
-    // Ganache = 1337 or 5777, Hardhat = 31337
-    if (chainId === 1337 || chainId === 5777 || chainId === 31337) {
-      badge.textContent = "🟡 Ganache";
-      badge.className = "net-badge ganache";
-    } else {
-      badge.textContent = "❌ Wrong Network";
-      badge.className = "net-badge error";
-    }
-  }
-
-  // ── Tab Switching ──
-  function switchTab(name, btn) {
-    document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
-    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
-    document.getElementById("tab-" + name).classList.add("active");
-    btn.classList.add("active");
-  }
-
-  // ── File Handling ──
-  function handleDrag(e, type) {
-    e.preventDefault();
-    const dropzone = document.getElementById("dropzone");
-    if (type === "over") {
-      dropzone.classList.add("dragover");
-    } else if (type === "leave") {
-      dropzone.classList.remove("dragover");
-    } else if (type === "drop") {
-      dropzone.classList.remove("dragover");
-      loadFile(e.dataTransfer.files[0], false);
-    }
-  }
-
-  function handleVerifyDrag(e, type) {
-    e.preventDefault();
-    const dropzone = document.getElementById("verifyDropzone");
-    if (type === "over") {
-      dropzone.classList.add("dragover");
-    } else if (type === "leave") {
-      dropzone.classList.remove("dragover");
-    } else if (type === "drop") {
-      dropzone.classList.remove("dragover");
-      loadFile(e.dataTransfer.files[0], true);
-    }
-  }
-
-  function handleFileSelect(e) {
-    loadFile(e.target.files[0], false);
-  }
-
-  function handleVerifyFile(e) {
-    loadFile(e.target.files[0], true);
-  }
-
-  async function loadFile(file, isVerify) {
-    if (!file) return;
-
-    if (!isVerify) {
-      currentFile = file;
-      document.getElementById("fileName").textContent = file.name;
-      document.getElementById("fileMeta").textContent = formatSize(file.size) + " · " + file.name.split(".").pop().toUpperCase();
-      document.getElementById("fileIcon").textContent = getFileIcon(file.name);
-      document.getElementById("fileChip").style.display = "flex";
-      document.getElementById("analyzeBtn").disabled = false;
-    } else {
-      verifyFile = file;
-      document.getElementById("verifyFileName").textContent = file.name;
-      document.getElementById("verifyFileMeta").textContent = formatSize(file.size);
-      document.getElementById("verifyChip").style.display = "flex";
-      
-      // Calculate hash
-      const hash = await sha256File(file);
-      document.getElementById("verifyHash").textContent = hash;
-      document.getElementById("verifyHashBox").style.display = "block";
-    }
-  }
-
-  function clearFile() {
-    currentFile = null;
-    analysisData = null;
-    document.getElementById("fileChip").style.display = "none";
-    document.getElementById("analyzeBtn").disabled = true;
-    document.getElementById("resultsCard").style.display = "none";
-    document.getElementById("chainCard").style.display = "none";
-    document.getElementById("fileInput").value = "";
-  }
-
-  function clearVerifyFile() {
-    verifyFile = null;
-    document.getElementById("verifyChip").style.display = "none";
-    document.getElementById("verifyHashBox").style.display = "none";
-    document.getElementById("verifyResult").style.display = "none";
-    document.getElementById("verifyFileInput").value = "";
-  }
-
-  // ── Analysis ──
-  async function runAnalysis() {
-    if (!currentFile) return;
-
-    const btn = document.getElementById("analyzeBtn");
-    const btnText = document.getElementById("analyzeBtnText");
-    const status = document.getElementById("nlpStatus");
-
-    btn.disabled = true;
-    btnText.innerHTML = '<span class="spinner"></span> Analysing...';
-    status.textContent = "Sending to NLP API...";
-    status.className = "status";
-
-    const startTime = Date.now();
-
-    try {
-      const title = document.getElementById("examTitle").value || currentFile.name;
-      const formData = new FormData();
-      formData.append("file", currentFile);
-      formData.append("title", title);
-
-      const response = await fetch(CFG.api + "/analyze", {
-        method: "POST",
-        body: formData
-      });
-
-      if (!response.ok) {
-        const error = await response.json().catch(() => ({ detail: "Unknown error" }));
-        throw new Error(error.detail || `HTTP ${response.status}`);
-      }
-
-      analysisData = await response.json();
-      renderResults(analysisData);
-      
-      document.getElementById("resultsCard").style.display = "block";
-      
-      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-      status.textContent = "✅ Analysis complete in " + elapsed + "s";
-      status.className = "status success";
-      
-      showToast("Analysis complete!", "success");
-
-    } catch (error) {
-      console.error("Analysis error:", error);
-      status.textContent = "❌ " + error.message;
-      status.className = "status error";
-      showToast("API Error: " + error.message, "error");
-      
-      // Show demo data
-      showDemoData();
-
-    } finally {
-      btnText.innerHTML = "🔬 Run NLP Analysis";
-      btn.disabled = false;
-    }
-  }
-
-  function showDemoData() {
-    analysisData = {
-      title: document.getElementById("examTitle").value || "Demo Paper",
-      question_count: 5,
-      flesch_score: 52.3,
-      flesch_grade: 9.1,
-      readability_label: "Standard",
-      avg_sentence_length: 18.4,
-      overall_bloom: "apply",
-      bias_summary: [],
-      ambiguous_questions: [3],
-      questions: [
-        { index: 1, text: "Define recursion in programming.", bloom_level: "remember", bloom_confidence: "high", bias_flags: [] },
-        { index: 2, text: "Explain the difference between an array and a linked list.", bloom_level: "understand", bloom_confidence: "high", bias_flags: [] },
-        { index: 3, text: "Implement a binary search algorithm.", bloom_level: "apply", bloom_confidence: "high", bias_flags: [] },
-        { index: 4, text: "Analyse the time complexity of quicksort.", bloom_level: "analyse", bloom_confidence: "high", bias_flags: [] },
-        { index: 5, text: "Design a caching system for a web application.", bloom_level: "create", bloom_confidence: "medium", bias_flags: [] }
-      ],
-      paper_hash: "0x" + "a".repeat(64),
-      report_hash: "0x" + "b".repeat(64),
-      report_pdf_b64: null
-    };
-    
-    renderResults(analysisData);
-    document.getElementById("resultsCard").style.display = "block";
-    showToast("Showing demo data (NLP API not running)", "error");
-  }
-
-  function renderResults(d) {
-    // Metrics
-    document.getElementById("metricsGrid").innerHTML = `
-      ${metric("Questions", d.question_count, "")}
-      ${metric("Flesch Score", d.flesch_score, d.readability_label)}
-      ${metric("Grade Level", "G" + d.flesch_grade, "")}
-      ${metric("Avg Sent", d.avg_sentence_length + "w", "")}
-      ${metric("Top Bloom", d.overall_bloom, "")}
-      ${metric("Bias Flags", d.bias_summary.length, d.bias_summary.length > 0 ? "⚠ Review" : "✓ None")}
-    `;
-
-    // Hashes
-    document.getElementById("paperHash").textContent = d.paper_hash;
-    document.getElementById("reportHash").textContent = d.report_hash;
-
-    // Bloom distribution
-    const levels = ["remember", "understand", "apply", "analyse", "evaluate", "create"];
-    const counts = {};
-    levels.forEach(l => counts[l] = 0);
-    d.questions.forEach(q => {
-      if (counts[q.bloom_level] !== undefined) counts[q.bloom_level]++;
-    });
-    
-    const maxCount = Math.max(...Object.values(counts), 1);
-    const colors = {
-      remember: "#64748b",
-      understand: "#3b82f6",
-      apply: "#22c55e",
-      analyse: "#f59e0b",
-      evaluate: "#a855f7",
-      create: "#f43f5e"
-    };
-
-    document.getElementById("bloomBars").innerHTML = levels.map(level => `
-      <div class="bloom-row">
-        <div class="bloom-label">${level}</div>
-        <div class="bloom-track">
-          <div class="bloom-fill" style="width: ${(counts[level] / maxCount) * 100}%; background: ${colors[level]}"></div>
-        </div>
-        <div class="bloom-count">${counts[level]}</div>
-      </div>
-    `).join("");
-
-    // Bias
-    const biasSection = document.getElementById("biasSection");
-    if (d.bias_summary && d.bias_summary.length > 0) {
-      biasSection.innerHTML = d.bias_summary.map(b => `<span class="bias-tag">${b}</span>`).join("");
-    } else {
-      biasSection.innerHTML = '<span class="no-bias">✓ No bias flags detected</span>';
-    }
-
-    // Question table
-    document.getElementById("qTable").innerHTML = d.questions.map(q => `
-      <div class="q-row">
-        <div class="q-num">Q${q.index}</div>
-        <div class="q-text" title="${q.text}">${q.text.slice(0, 80)}${q.text.length > 80 ? "..." : ""}</div>
-        <div><span class="bloom-pill bloom-${q.bloom_level}">${q.bloom_level}</span></div>
-        <div class="q-status ${q.bias_flags && q.bias_flags.length > 0 ? 'warn' : 'ok'}">
-          ${q.bias_flags && q.bias_flags.length > 0 ? "⚠" : "✓"}
-        </div>
-        <div class="q-status ${d.ambiguous_questions && d.ambiguous_questions.includes(q.index) ? 'warn' : ''}">
-          ${d.ambiguous_questions && d.ambiguous_questions.includes(q.index) ? "⚠ Vague" : ""}
-        </div>
-      </div>
-    `).join("");
-  }
-
-  function metric(label, value, sub) {
-    return `
-      <div class="metric">
-        <div class="metric-label">${label}</div>
-        <div class="metric-value">${value}</div>
-        ${sub ? `<div class="metric-sub">${sub}</div>` : ""}
-      </div>
-    `;
-  }
-
-  // ── Notarize ──
-  async function notarize() {
-    if (!analysisData) {
-      showToast("Run analysis first", "error");
-      return;
-    }
-
-    if (!CFG.contract) {
-      showToast("Set contract address in Config tab", "error");
-      return;
-    }
-
-    const btn = document.getElementById("notarizeBtn");
-    const status = document.getElementById("notarizeStatus");
-    
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> Waiting for MetaMask...';
-    status.textContent = "";
-
-    try {
-      let txHash, blockNum, gasUsed;
-
-      if (signer) {
-        const contract = new ethers.Contract(CFG.contract, ABI, signer);
-        
-        // Pad hashes to 32 bytes
-        const paperHash = analysisData.paper_hash.padEnd(66, "0").slice(0, 66);
-        const reportHash = analysisData.report_hash.padEnd(66, "0").slice(0, 66);
-        
-        const tx = await contract.notarize(paperHash, reportHash, analysisData.title);
-        showToast("TX sent: " + tx.hash.slice(0, 18) + "...", "info");
-        
-        const receipt = await tx.wait();
-        txHash = receipt.transactionHash;
-        blockNum = receipt.blockNumber;
-        gasUsed = receipt.gasUsed?.toString();
-        
-        showToast("Confirmed in block #" + blockNum, "success");
-        
-        // Refresh Merkle tree if on that tab
-        if (document.getElementById("tab-merkle").classList.contains("active")) {
-          await refreshMerkleTree();
-        }
-      } else {
-        // Demo mode
-        await sleep(1500);
-        txHash = "0x" + generateHex(64) + " (demo)";
-        blockNum = "demo";
-        gasUsed = "21000";
-        showToast("Demo mode — connect MetaMask for real TX", "error");
-      }
-
-      // Show chain record
-      document.getElementById("chainRecord").innerHTML = `
-        <div class="chain-row"><span class="chain-key">Status</span><span class="chain-val" style="color: #4ade80">✓ Confirmed</span></div>
-        <div class="chain-row"><span class="chain-key">Exam</span><span class="chain-val">${analysisData.title}</span></div>
-        <div class="chain-row"><span class="chain-key">From</span><span class="chain-val">${walletAddr || "demo"}</span></div>
-        <div class="chain-row"><span class="chain-key">Contract</span><span class="chain-val">${CFG.contract.slice(0, 20)}...</span></div>
-        <div class="chain-row"><span class="chain-key">Block</span><span class="chain-val">${blockNum}</span></div>
-        <div class="chain-row"><span class="chain-key">Gas Used</span><span class="chain-val">${gasUsed}</span></div>
-        <div class="chain-row"><span class="chain-key">TX Hash</span><span class="chain-val">${txHash.slice(0, 40)}...</span></div>
-      `;
-      document.getElementById("chainCard").style.display = "block";
-
-    } catch (error) {
-      console.error("Notarize error:", error);
-      let msg = error.message || "Transaction failed";
-      if (msg.includes("user rejected")) {
-        msg = "User rejected the transaction";
-      }
-      status.innerHTML = '<span style="color: var(--error)">❌ ' + msg + '</span>';
-      showToast(msg, "error");
-    } finally {
-      btn.innerHTML = "⛓ Notarize on Blockchain";
-      btn.disabled = false;
-    }
-  }
-
-  // ── Verify ──
-  async function verifyChain() {
-    if (!verifyFile || !CFG.contract) {
-      showToast("Set contract address in Config", "error");
-      return;
-    }
-
-    const resultEl = document.getElementById("verifyResult");
-    const hash = document.getElementById("verifyHash").textContent;
-
-    resultEl.style.display = "block";
-    resultEl.innerHTML = '<div style="text-align: center; padding: 2rem;">Checking blockchain...</div>';
-
-    try {
-      let result = null;
-
-      if (provider) {
-        const contract = new ethers.Contract(CFG.contract, ABI, provider);
-        const paperHash = hash.padEnd(66, "0").slice(0, 66);
-        result = await contract.verify(paperHash);
-      } else {
-        await sleep(1000);
-      }
-
-      const valid = result && result[0];
-
-      if (valid) {
-        resultEl.innerHTML = `
-          <div style="color: var(--success); font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem;">
-            ✅ AUTHENTIC — Found on Blockchain
-          </div>
-          <div class="chain-row"><span class="chain-key">Setter</span><span class="chain-val">${result[1]}</span></div>
-          <div class="chain-row"><span class="chain-key">Notarized</span><span class="chain-val">${new Date(result[3] * 1000).toLocaleString()}</span></div>
-          <div class="chain-row"><span class="chain-key">Title</span><span class="chain-val">${result[4]}</span></div>
-          <div class="chain-row"><span class="chain-key">Report Hash</span><span class="chain-val">${result[2].slice(0, 40)}...</span></div>
-        `;
-        showToast("Paper verified authentic", "success");
-      } else {
-        resultEl.innerHTML = `
-          <div style="color: var(--error); font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem;">
-            ❌ NOT FOUND — No on-chain record
-          </div>
-          <div style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">
-            This paper has not been notarized, or has been modified since notarization.
-          </div>
-          <div class="hash-box">${hash}</div>
-        `;
-        showToast("Paper not found on chain", "error");
-      }
-    } catch (error) {
-      console.error("Verify error:", error);
-      resultEl.innerHTML = `
-        <div style="color: var(--error);">
-          Verification error: ${error.message}
-        </div>
-      `;
-      showToast("Verify error: " + error.message, "error");
-    }
-  }
-
-  // ── Config Functions ──
-  async function testApi() {
-    const status = document.getElementById("configStatus");
-    status.textContent = "Testing...";
-
-    // Update config from inputs
-    CFG.api = document.getElementById("cfgApi").value.trim();
-
-    try {
-      const response = await fetch(CFG.api + "/");
-      const data = await response.json();
-      status.innerHTML = '<span style="color: var(--success)">✅ NLP API: ' + data.message + '</span>';
-      document.getElementById("apiDot").className = "connection-dot connected";
-      document.getElementById("apiStatus").textContent = "Connected";
-    } catch (error) {
-      status.innerHTML = '<span style="color: var(--error)">❌ Cannot reach NLP API at ' + CFG.api + '</span>';
-      document.getElementById("apiDot").className = "connection-dot error";
-      document.getElementById("apiStatus").textContent = "Offline";
-    }
-  }
-
-  async function testChain() {
-    const status = document.getElementById("configStatus");
-    status.textContent = "Testing connection...";
-
-    // Update config from inputs
-    CFG.rpc = document.getElementById("cfgRpc").value.trim();
-    CFG.contract = document.getElementById("cfgContract").value.trim();
-
-    try {
-      const p = new ethers.providers.JsonRpcProvider(CFG.rpc);
-      const net = await p.getNetwork();
-      const block = await p.getBlockNumber();
-      
-      let contractInfo = "";
-      if (CFG.contract) {
-        try {
-          const contract = new ethers.Contract(CFG.contract, ABI, p);
-          const root = await contract.merkleRoot();
-          const leafCount = await contract.getLeafCount();
-          contractInfo = ` | Contract: ${leafCount} leaves`;
-        } catch (e) {
-          contractInfo = " (contract not verified)";
-        }
-      }
-      
-      status.innerHTML = `<span style="color: var(--success)">✅ Connected — Chain ${net.chainId}, Block #${block}${contractInfo}</span>`;
-      document.getElementById("chainDot").className = "connection-dot connected";
-      document.getElementById("chainStatus").textContent = "Connected";
-    } catch (error) {
-      status.innerHTML = `<span style="color: var(--error)">❌ Cannot reach node at ${CFG.rpc}</span>`;
-      document.getElementById("chainDot").className = "connection-dot error";
-      document.getElementById("chainStatus").textContent = "Error";
-    }
-  }
-
-  // ── Utility Functions ──
-  async function sha256File(file) {
-    const buffer = await file.arrayBuffer();
-    const digest = await crypto.subtle.digest("SHA-256", buffer);
-    return "0x" + Array.from(new Uint8Array(digest))
-      .map(b => b.toString(16).padStart(2, "0"))
-      .join("");
-  }
-
-  function formatSize(bytes) {
-    if (bytes < 1024) return bytes + " B";
-    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
-    return (bytes / 1048576).toFixed(2) + " MB";
-  }
-
-  function generateHex(length) {
-    return Array.from({ length }, () => Math.floor(Math.random() * 16).toString(16)).join("");
-  }
-
-  function shortAddr(addr) {
-    return addr ? addr.slice(0, 8) + "..." + addr.slice(-6) : "";
-  }
-
-  function getFileIcon(filename) {
-    const ext = filename.split(".").pop().toLowerCase();
-    const icons = { pdf: "📑", docx: "📝", doc: "📝", txt: "📄" };
-    return icons[ext] || "📄";
-  }
-
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  function copyHash(id) {
-    const text = document.getElementById(id).textContent;
-    navigator.clipboard?.writeText(text);
-    showToast("Hash copied!");
-  }
-
-  function downloadReport() {
-    if (!analysisData?.report_pdf_b64) {
-      showToast("No report available — start NLP API server", "error");
-      return;
-    }
-    
-    const binary = atob(analysisData.report_pdf_b64);
-    const bytes = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++) {
-      bytes[i] = binary.charCodeAt(i);
-    }
-    
-    const blob = new Blob([bytes], { type: "application/pdf" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "QuizLens_Report.pdf";
-    a.click();
-    URL.revokeObjectURL(url);
-    
-    showToast("Report downloaded", "success");
-  }
-
-  // ── Toast ──
-  let toastTimeout;
-  function showToast(message, type = "info") {
-    const toast = document.getElementById("toast");
-    toast.textContent = message;
-    toast.className = type;
-    toast.classList.add("show");
-    
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
-      toast.classList.remove("show");
-    }, 4000);
-  }
-
-  // ── Event Listeners ──
-  if (window.ethereum) {
-    window.ethereum.on("accountsChanged", () => location.reload());
-    window.ethereum.on("chainChanged", () => location.reload());
-  }
-
-  // Load config on page load
-  window.addEventListener("load", async () => {
-    if (CFG.contract) {
-      document.getElementById("cfgContract").value = CFG.contract;
-      validateContractAddress(document.getElementById("cfgContract"));
-      showToast("Contract address auto-loaded", "success");
-    }
-    await checkConnections();
-  });
-
-  // ── Connection Status ──
-  async function checkConnections() {
-    // Check API
-    try {
-      const response = await fetch(CFG.api + "/", { method: "GET" });
-      if (response.ok) {
-        document.getElementById("apiDot").className = "connection-dot connected";
-        document.getElementById("apiStatus").textContent = "Connected";
-      } else {
-        throw new Error("API returned " + response.status);
-      }
-    } catch (e) {
-      document.getElementById("apiDot").className = "connection-dot error";
-      document.getElementById("apiStatus").textContent = "Offline";
-    }
-
-    // Check chain
-    if (CFG.contract) {
-      try {
-        const p = new ethers.providers.JsonRpcProvider(CFG.rpc);
-        await p.getNetwork();
-        document.getElementById("chainDot").className = "connection-dot connected";
-        document.getElementById("chainStatus").textContent = "Connected";
-        document.getElementById("merkleContractDot").className = "connection-dot connected";
-        document.getElementById("merkleChainDot").className = "connection-dot connected";
-      } catch (e) {
-        document.getElementById("chainDot").className = "connection-dot error";
-        document.getElementById("chainStatus").textContent = "Error";
-        document.getElementById("merkleContractDot").className = "connection-dot error";
-        document.getElementById("merkleChainDot").className = "connection-dot error";
-      }
-    } else {
-      document.getElementById("chainDot").className = "connection-dot";
-      document.getElementById("chainStatus").textContent = "Not configured";
-    }
-
-    // Update config badge
-    if (!CFG.contract) {
-      document.getElementById("configBadge").style.display = "inline";
-    } else {
-      document.getElementById("configBadge").style.display = "none";
-    }
-  }
-
-  // ── Config Validation ──
-  function validateApiUrl(input) {
-    const hint = document.getElementById("cfgApiHint");
-    try {
-      new URL(input.value);
-      input.className = "";
-      hint.textContent = "Valid URL format";
-      hint.className = "field-hint success";
-      return true;
-    } catch (e) {
-      if (input.value === "") {
-        input.className = "";
-        hint.textContent = "URL for NLP analysis service";
-        hint.className = "field-hint";
-      } else {
-        input.className = "invalid";
-        hint.textContent = "Invalid URL format";
-        hint.className = "field-hint error";
-      }
-      return false;
-    }
-  }
-
-  function validateContractAddress(input) {
-    const hint = document.getElementById("cfgContractHint");
-    const address = input.value.trim();
-    
-    if (address === "") {
-      input.className = "";
-      hint.textContent = "QuizLens smart contract on blockchain";
-      hint.className = "field-hint";
-      return false;
-    }
-    
-    if (/^0x[a-fA-F0-9]{40}$/.test(address)) {
-      input.className = "valid";
-      hint.textContent = "Valid Ethereum address format";
-      hint.className = "field-hint success";
-      return true;
-    } else {
-      input.className = "invalid";
-      hint.textContent = "Must be a valid Ethereum address (0x...)";
-      hint.className = "field-hint error";
-      return false;
-    }
-  }
-
-  function validateRpcUrl(input) {
-    const hint = document.getElementById("cfgRpcHint");
-    try {
-      new URL(input.value);
-      input.className = "";
-      hint.textContent = "Valid URL format";
-      hint.className = "field-hint success";
-      return true;
-    } catch (e) {
-      if (input.value === "") {
-        input.className = "";
-        hint.textContent = "Local blockchain node endpoint";
-        hint.className = "field-hint";
-      } else {
-        input.className = "invalid";
-        hint.textContent = "Invalid URL format";
-        hint.className = "field-hint error";
-      }
-      return false;
-    }
-  }
-
-  // ── Config Save/Load ──
-  function saveConfig() {
-    const api = document.getElementById("cfgApi").value.trim();
-    const contract = document.getElementById("cfgContract").value.trim();
-    const rpc = document.getElementById("cfgRpc").value.trim();
-
-    if (!validateApiUrl(document.getElementById("cfgApi"))) {
-      showToast("Please fix API URL", "error");
-      return;
-    }
-
-    if (contract && !validateContractAddress(document.getElementById("cfgContract"))) {
-      showToast("Please fix contract address", "error");
-      return;
-    }
-
-    if (!validateRpcUrl(document.getElementById("cfgRpc"))) {
-      showToast("Please fix RPC URL", "error");
-      return;
-    }
-
-    const config = {
-      api,
-      contract,
-      rpc,
-      savedAt: new Date().toISOString()
-    };
-
-    localStorage.setItem("quizlens-config", JSON.stringify(config));
-    
-    CFG.api = api;
-    CFG.contract = contract;
-    CFG.rpc = rpc;
-
-    updateSavedConfigDisplay(config);
-    checkConnections();
-    showToast("Configuration saved!", "success");
-  }
-
-  function loadSavedConfig() {
-    const saved = localStorage.getItem("quizlens-config");
-    if (saved) {
-      try {
-        const config = JSON.parse(saved);
-        document.getElementById("cfgApi").value = config.api || "http://localhost:8000";
-        document.getElementById("cfgContract").value = config.contract || "";
-        document.getElementById("cfgRpc").value = config.rpc || "http://127.0.0.1:8545";
-        
-        CFG.api = config.api || CFG.api;
-        CFG.contract = config.contract || CFG.contract;
-        CFG.rpc = config.rpc || CFG.rpc;
-
-        updateSavedConfigDisplay(config);
-        validateApiUrl(document.getElementById("cfgApi"));
-        if (CFG.contract) validateContractAddress(document.getElementById("cfgContract"));
-        validateRpcUrl(document.getElementById("cfgRpc"));
-      } catch (e) {
-        console.error("Failed to load config:", e);
-      }
-    }
-  }
-
-  function loadConfig() {
-    loadSavedConfig();
-    checkConnections();
-    showToast("Configuration loaded", "info");
-  }
-
-  function clearSavedConfig() {
-    localStorage.removeItem("quizlens-config");
-    document.getElementById("savedApi").textContent = "-";
-    document.getElementById("savedContract").textContent = "-";
-    document.getElementById("savedRpc").textContent = "-";
-    document.getElementById("savedTime").textContent = "Never";
-    showToast("Saved configuration cleared", "info");
-  }
-
-  function updateSavedConfigDisplay(config) {
-    document.getElementById("savedApi").textContent = config.api || "-";
-    document.getElementById("savedContract").textContent = config.contract || "-";
-    document.getElementById("savedRpc").textContent = config.rpc || "-";
-    document.getElementById("savedTime").textContent = config.savedAt 
-      ? new Date(config.savedAt).toLocaleString() 
-      : "Never";
-  }
-
-  // ── Merkle Tree Functions ──
-  async function refreshMerkleTree() {
-    if (!CFG.contract) {
-      showToast("Set contract address in Config tab", "error");
-      return;
-    }
-
-    const btn = document.getElementById("refreshMerkleBtn");
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> Loading...';
-
-    try {
-      const p = new ethers.providers.JsonRpcProvider(CFG.rpc);
-      const contract = new ethers.Contract(CFG.contract, ABI, p);
-
-      const [root, leafCount] = await Promise.all([
-        contract.merkleRoot(),
-        contract.getLeafCount()
-      ]);
-
-      document.getElementById("merkleEmpty").style.display = "none";
-      document.getElementById("merkleContent").style.display = "block";
-      document.getElementById("merkleProofCard").style.display = "block";
-
-      document.getElementById("merkleRootDisplay").textContent = root;
-      document.getElementById("merkleContractDisplay").textContent = CFG.contract;
-      document.getElementById("merkleLeafCount").textContent = leafCount.toString();
-      
-      const depth = Math.ceil(Math.log2(Math.max(leafCount, 1))) + 1;
-      document.getElementById("merkleTreeDepth").textContent = depth.toString();
-      document.getElementById("merkleLastUpdate").textContent = new Date().toLocaleTimeString();
-
-      // Fetch all leaves
-      const leaves = [];
-      for (let i = 0; i < leafCount; i++) {
-        const leaf = await contract.notarizedHashes(i);
-        leaves.push(leaf);
-      }
-
-      // Build and render tree
-      const tree = buildMerkleTree(leaves);
-      renderMerkleTree(tree, root);
-
-      showToast("Merkle tree updated", "success");
-
-    } catch (error) {
-      console.error("Merkle tree error:", error);
-      showToast("Error loading Merkle tree: " + error.message, "error");
-      document.getElementById("merkleEmpty").style.display = "block";
-      document.getElementById("merkleContent").style.display = "none";
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = "🔄 Refresh Tree";
-    }
-  }
-
-  function buildMerkleTree(leaves) {
-    if (leaves.length === 0) return null;
-    
-    const hash = (a, b) => {
-      const arr = [a, b].sort();
-      return ethers.utils.keccak256(
-        ethers.utils.defaultAbiCoder.encode(["bytes32", "bytes32"], arr)
-      );
-    };
-
-    let currentLevel = [...leaves];
-    const levels = [currentLevel];
-
-    while (currentLevel.length > 1) {
-      const nextLevel = [];
-      for (let i = 0; i < currentLevel.length; i += 2) {
-        const left = currentLevel[i];
-        const right = i + 1 < currentLevel.length ? currentLevel[i + 1] : currentLevel[i];
-        nextLevel.push(hash(left, right));
-      }
-      currentLevel = nextLevel;
-      levels.push(currentLevel);
-    }
-
-    return levels;
-  }
-
-  function renderMerkleTree(tree, root) {
-    const container = document.getElementById("merkleTree");
-    container.innerHTML = "";
-
-    if (!tree || tree.length === 0) {
-      container.innerHTML = '<div class="empty-state">No notarized papers yet</div>';
-      return;
-    }
-
-    // Reverse to show root at top
-    const reversed = [...tree].reverse();
-    
-    reversed.forEach((level, levelIndex) => {
-      const levelDiv = document.createElement("div");
-      levelDiv.className = "merkle-level";
-      
-      const actualLevel = tree.length - 1 - levelIndex;
-      
-      level.forEach((node, nodeIndex) => {
-        const nodeDiv = document.createElement("div");
-        nodeDiv.className = "merkle-node";
-        nodeDiv.title = node;
-        
-        if (actualLevel === 0) {
-          nodeDiv.classList.add("root");
-          nodeDiv.textContent = truncateHash(node) + " (ROOT)";
-        } else if (actualLevel === tree.length - 1) {
-          nodeDiv.classList.add("leaf");
-          nodeDiv.textContent = truncateHash(node) + " #" + (nodeIndex + 1);
-        } else {
-          nodeDiv.textContent = truncateHash(node);
-        }
-
-        nodeDiv.onclick = () => highlightPath(nodeDiv, node);
-        levelDiv.appendChild(nodeDiv);
-      });
-
-      container.appendChild(levelDiv);
-
-      // Add connector if not last
-      if (levelIndex < reversed.length - 1) {
-        const connector = document.createElement("div");
-        connector.className = "merkle-connector";
-        container.appendChild(connector);
-      }
-    });
-  }
-
-  function truncateHash(hash) {
-    if (!hash || hash.length < 16) return hash || "";
-    return hash.slice(0, 8) + "..." + hash.slice(-6);
-  }
-
-  function highlightPath(nodeDiv, hash) {
-    // Reset all highlights
-    document.querySelectorAll(".merkle-node").forEach(n => n.classList.remove("highlighted"));
-    nodeDiv.classList.add("highlighted");
-    
-    showToast("Hash: " + hash, "info");
-  }
-
-  function expandAllNodes() {
-    document.querySelectorAll(".merkle-node").forEach(n => {
-      n.style.maxWidth = "none";
-      n.style.overflow = "visible";
-      n.style.whiteSpace = "normal";
-    });
-    
-    setTimeout(() => {
-      document.querySelectorAll(".merkle-node").forEach(n => {
-        if (!n.classList.contains("highlighted")) {
-          n.style.maxWidth = "120px";
-          n.style.overflow = "hidden";
-          n.style.whiteSpace = "nowrap";
-        }
-      });
-    }, 3000);
-    
-    showToast("Nodes expanded for 3 seconds", "info");
-  }
-
-  function copyMerkleRoot() {
-    const root = document.getElementById("merkleRootDisplay").textContent;
-    navigator.clipboard?.writeText(root);
-    showToast("Merkle root copied!", "success");
-  }
-
-  async function verifyMerkleProof() {
-    const leafHash = document.getElementById("proofLeafHash").value.trim();
-    const resultDiv = document.getElementById("proofResult");
-
-    if (!leafHash) {
-      resultDiv.innerHTML = '<div style="color: var(--error);">Please enter a leaf hash</div>';
-      return;
-    }
-
-    if (!CFG.contract) {
-      resultDiv.innerHTML = '<div style="color: var(--error);">Contract not configured</div>';
-      return;
-    }
-
-    resultDiv.innerHTML = '<div style="color: var(--muted);">Verifying...</div>';
-
-    try {
-      const p = new ethers.providers.JsonRpcProvider(CFG.rpc);
-      const contract = new ethers.Contract(CFG.contract, ABI, p);
-      
-      const [root, leafCount] = await Promise.all([
-        contract.merkleRoot(),
-        contract.getLeafCount()
-      ]);
-
-      // Find if leaf exists
-      let found = false;
-      for (let i = 0; i < leafCount; i++) {
-        const leaf = await contract.notarizedHashes(i);
-        if (leaf.toLowerCase() === leafHash.toLowerCase()) {
-          found = true;
-          break;
-        }
-      }
-
-      if (found) {
-        resultDiv.innerHTML = `
-          <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 10px; padding: 1rem;">
-            <div style="color: var(--success); font-weight: 600; margin-bottom: 0.5rem;">✓ Leaf Found in Tree</div>
-            <div style="font-size: 0.8rem; color: var(--muted);">This paper has been notarized and is part of the Merkle tree.</div>
-            <div style="margin-top: 0.5rem; font-size: 0.75rem;">
-              <span style="color: var(--muted);">Root:</span> 
-              <span style="color: var(--text);">${truncateHash(root)}</span>
-            </div>
-          </div>
-        `;
-        showToast("Leaf verified in Merkle tree", "success");
-      } else {
-        resultDiv.innerHTML = `
-          <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 1rem;">
-            <div style="color: var(--error); font-weight: 600; margin-bottom: 0.5rem;">✗ Leaf Not Found</div>
-            <div style="font-size: 0.8rem; color: var(--muted);">This paper hash is not in the current Merkle tree.</div>
-          </div>
-        `;
-        showToast("Leaf not found in tree", "error");
-      }
-
-    } catch (error) {
-      console.error("Verify proof error:", error);
-      resultDiv.innerHTML = `<div style="color: var(--error);">Error: ${error.message}</div>`;
-      showToast("Verification error", "error");
-    }
-  }
-
-  // Update Merkle tree when tab is opened
-  const originalSwitchTab = switchTab;
-  switchTab = function(name, btn) {
-    originalSwitchTab(name, btn);
-    if (name === "merkle" && CFG.contract) {
-      refreshMerkleTree();
-    }
-  };
-</script>
-
+<script type="module" src="./js/app.js"></script>
 </body>
 </html>
