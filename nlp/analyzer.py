@@ -154,8 +154,8 @@ def is_ambiguous(text: str) -> bool:
     return False
 
 
-def analyze_paper(text: str, title: str = "Untitled") -> PaperAnalysis:
-    paper_hash = sha256_text(text)
+def analyze_paper(text: str, title: str = "Untitled", file_bytes: bytes = b"") -> PaperAnalysis:
+    paper_hash = sha256_bytes(file_bytes) if file_bytes else sha256_text(text)
     
     try:
         flesch = round(textstat.flesch_reading_ease(text), 1)
