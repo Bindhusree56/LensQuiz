@@ -1,6 +1,8 @@
 import { CFG, ABI } from './config.js';
 import { showToast } from './ui.js';
 
+const PAGE_SIZE = 100;
+
 async function refreshMerkleTree() {
   if (!CFG.contract) {
     showToast("Set contract address in Config tab", "error");
@@ -17,7 +19,7 @@ async function refreshMerkleTree() {
 
     const [root, leafCount] = await Promise.all([
       contract.merkleRoot(),
-      contract.getLeafCount()
+      contract.leafCount()
     ]);
 
     document.getElementById("merkleEmpty").style.display = "none";
@@ -32,12 +34,7 @@ async function refreshMerkleTree() {
     document.getElementById("merkleTreeDepth").textContent = depth.toString();
     document.getElementById("merkleLastUpdate").textContent = new Date().toLocaleTimeString();
 
-    const leaves = [];
-    for (let i = 0; i < leafCount; i++) {
-      const leaf = await contract.notarizedHashes(i);
-      leaves.push(leaf);
-    }
-
+    const leaves = await fetchAllLeaves(contract, leafCount);
     const tree = buildMerkleTree(leaves);
     renderMerkleTree(tree, root);
 
@@ -54,13 +51,31 @@ async function refreshMerkleTree() {
   }
 }
 
+async function fetchAllLeaves(contract, leafCount) {
+  const leaves = [];
+  
+  if (leafCount === 0) return leaves;
+  
+  if (typeof contract.getAllLeavesPaginated === 'function') {
+    for (let offset = 0; offset < leafCount; offset += PAGE_SIZE) {
+      const batch = await contract.getAllLeavesPaginated(offset, PAGE_SIZE);
+      leaves.push(...batch);
+    }
+  } else {
+    for (let i = 0; i < leafCount; i++) {
+      const leaf = await contract.notarizedHashes(i);
+      leaves.push(leaf);
+    }
+  }
+  
+  return leaves;
+}
+
 function buildMerkleTree(leaves) {
   if (leaves.length === 0) return null;
   
-  const hash = (a, b) => {
-    return ethers.utils.keccak256(
-      ethers.utils.defaultAbiCoder.encode(["bytes32", "bytes32"], [a, b])
-    );
+  const hashPair = (a, b) => {
+    return ethers.utils.solidityPack(["bytes32", "bytes32"], [a, b]);
   };
 
   let currentLevel = [...leaves];
@@ -71,7 +86,8 @@ function buildMerkleTree(leaves) {
     for (let i = 0; i < currentLevel.length; i += 2) {
       const left = currentLevel[i];
       const right = i + 1 < currentLevel.length ? currentLevel[i + 1] : currentLevel[i];
-      nextLevel.push(hash(left, right));
+      const combined = ethers.utils.solidityPack(["bytes32", "bytes32"], [left, right]);
+      nextLevel.push(ethers.utils.keccak256(combined));
     }
     currentLevel = nextLevel;
     levels.push(currentLevel);
@@ -186,19 +202,24 @@ async function verifyMerkleProof() {
     
     const [root, leafCount] = await Promise.all([
       contract.merkleRoot(),
-      contract.getLeafCount()
+      contract.leafCount()
     ]);
 
     let found = false;
+    let leafIndex = -1;
+    
     for (let i = 0; i < leafCount; i++) {
-      const leaf = await contract.notarizedHashes(i);
+      const leaf = await contract.getLeafHash(i);
       if (leaf.toLowerCase() === leafHash.toLowerCase()) {
         found = true;
+        leafIndex = i;
         break;
       }
     }
 
     if (found) {
+      const proof = buildProofFromTree(leafHash, leafIndex, await fetchAllLeaves(contract, leafCount));
+      
       resultDiv.innerHTML = `
         <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 10px; padding: 1rem;">
           <div style="color: var(--success); font-weight: 600; margin-bottom: 0.5rem;">✓ Leaf Found in Tree</div>
@@ -206,6 +227,10 @@ async function verifyMerkleProof() {
           <div style="margin-top: 0.5rem; font-size: 0.75rem;">
             <span style="color: var(--muted);">Root:</span> 
             <span style="color: var(--text);">${truncateHash(root)}</span>
+          </div>
+          <div style="margin-top: 0.5rem; font-size: 0.75rem;">
+            <span style="color: var(--muted);">Leaf Index:</span> 
+            <span style="color: var(--text);">#${leafIndex}</span>
           </div>
         </div>
       `;
@@ -227,7 +252,51 @@ async function verifyMerkleProof() {
   }
 }
 
+function buildProofFromTree(leafHash, leafIndex, allLeaves) {
+  if (allLeaves.length <= 1) return { proof: [], sides: [] };
+  
+  const proof = [];
+  const sides = [];
+  let currentLevel = [...allLeaves];
+  
+  while (currentLevel.length > 1) {
+    const isRightNode = leafIndex % 2 === 0;
+    const siblingIndex = isRightNode ? leafIndex + 1 : leafIndex - 1;
+    
+    if (siblingIndex < currentLevel.length) {
+      proof.push(currentLevel[siblingIndex]);
+      sides.push(isRightNode);
+    } else {
+      proof.push(currentLevel[leafIndex]);
+      sides.push(false);
+    }
+    
+    const nextLevel = [];
+    for (let i = 0; i < currentLevel.length; i += 2) {
+      const left = currentLevel[i];
+      const right = i + 1 < currentLevel.length ? currentLevel[i + 1] : currentLevel[i];
+      const combined = ethers.utils.solidityPack(["bytes32", "bytes32"], [left, right]);
+      nextLevel.push(ethers.utils.keccak256(combined));
+    }
+    
+    leafIndex = Math.floor(leafIndex / 2);
+    currentLevel = nextLevel;
+  }
+  
+  return { proof, sides };
+}
+
+async function verifyProofOnChain(leafHash, proof, sides) {
+  const p = new ethers.providers.JsonRpcProvider(CFG.rpc);
+  const contract = new ethers.Contract(CFG.contract, [
+    "function verifyMerkleProof(bytes32 leaf, bytes32[] proof, bool[] sides) external view returns (bool)"
+  ], p);
+  
+  return await contract.verifyMerkleProof(leafHash, proof, sides);
+}
+
 export { 
   refreshMerkleTree, buildMerkleTree, renderMerkleTree,
-  truncateHash, highlightPath, expandAllNodes, copyMerkleRoot, verifyMerkleProof
+  truncateHash, highlightPath, expandAllNodes, copyMerkleRoot, verifyMerkleProof,
+  buildProofFromTree, verifyProofOnChain
 };
