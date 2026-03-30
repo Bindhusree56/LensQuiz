@@ -3,18 +3,14 @@
   "version": "1.0.0",
   "description": "QuizLens — NLP Question Analyser with Blockchain Audit Trail",
   "scripts": {
-    "node": "npx hardhat node",
-    "compile": "npx hardhat compile",
-    "deploy:local": "npx hardhat run scripts/deploy.js --network localhost",
-    "deploy:sepolia": "npx hardhat run scripts/deploy.js --network sepolia",
-    "test": "npx hardhat test"
+    "compile": "npx truffle compile",
+    "deploy": "npx truffle migrate --network development",
+    "deploy:reset": "npx truffle migrate --reset --network development"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@truffle/hdwallet-provider": "^2.1.0",
     "dotenv": "^16.0.0",
-    "hardhat": "^2.19.0"
+    "truffle": "^5.11.0"
   },
-  "dependencies": {
-    "uvicorn": "^0.0.1-security"
-  }
+  "dependencies": {}
 }
